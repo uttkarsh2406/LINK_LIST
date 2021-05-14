@@ -49,6 +49,47 @@ class Solution
     Node *compute(Node *head)
     {
         // your code goes here
+       Node *curr=head,*pre=NULL,*next=NULL;
+       while (curr!=NULL)
+       {
+           /* code */
+           next=curr->next;
+           curr->next=pre;
+           pre=curr;
+           curr=next;
+       }
+       head=pre;
+
+       Node *present=head,*max=head,*temp=NULL;
+
+       while (present != NULL && present->next != NULL  )
+       {
+           /* code */
+           if(present->next->data <max->data){
+               temp=present->next;
+               present->next=temp->next;
+               free(temp);
+           }
+           else{
+               present=present->next;
+               max=present;
+           }
+       }
+       
+       curr=head;
+       pre=NULL;
+       next=NULL;
+       while (curr!=NULL)
+       {
+           /* code */
+           next=curr->next;
+           curr->next=pre;
+           pre=curr;
+           curr=next;
+       }
+       head=pre;
+       
+       return head;
         
     }
     
